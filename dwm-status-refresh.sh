@@ -135,7 +135,7 @@ LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 export IDENTIFIER="unicode"
 
-. "$DIR/dwmbar-functions/dwm_transmission.sh"
+#. "$DIR/dwmbar-functions/dwm_transmission.sh"
 #. "$DIR/dwmbar-functions/dwm_cmus.sh"
 #. "$DIR/dwmbar-functions/dwm_resources.sh"
 #. "$DIR/dwmbar-functions/dwm_battery.sh"

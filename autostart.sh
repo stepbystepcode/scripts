@@ -13,3 +13,4 @@ xfce4-volumed-pulse &
 albert &
 ss-qt5 &
 fcitx &
+aria2c --conf-path="/home/peter/aria2/aria2.conf"
