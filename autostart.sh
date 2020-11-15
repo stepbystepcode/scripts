@@ -12,5 +12,5 @@ xfce4-volumed-pulse &
 ~/scripts/autostart_wait.sh &
 albert &
 ss-qt5 &
-fcitx &
+fcitx5 &
 aria2c --conf-path="/home/peter/aria2/aria2.conf"
