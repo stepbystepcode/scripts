@@ -1,2 +1,2 @@
 #!/bin/bash
-clash -d ~/Public/clash/
+clash -d /opt/clash/
