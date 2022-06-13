@@ -7,8 +7,8 @@
 # Dependencies: alsa-utils
 
 dwm_alsa () {
-    VOL=$(pamixer --get-volume-human | tr -d '%')
-    #VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
+    #VOL=$(pamixer --get-volume-human | tr -d '%')
+    VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$VOL" -eq 0 ]; then
