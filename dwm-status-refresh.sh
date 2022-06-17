@@ -1,28 +1,25 @@
 print_volume() {
-	volume="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
-	if test "$volume" -gt 0
-	then
-		echo -e "\uE05D${volume}"
-	else
-		echo -e "Mute"
-	fi
+	volume="$(pulseaudio-ctl | sed -n '15p' | awk  '{print substr($4,14)}')"
+		if [ "$volume" -eq 0 ]; then
+            printf "🔇"
+        elif [ "$volume" -gt 0 ] && [ "$volume" -le 33 ]; then
+            printf "🔈$volume%s%%"
+        elif [ "$volume" -gt 33 ] && [ "$volume" -le 66 ]; then
+            printf "🔉$volume%s%%"
+        else
+          printf "🔊 $volume%s%%"
+        fi
 }
 print_date(){
-	date '+%Y.%m.%d  %H:%M'
-}
-show_record(){
-	test -f /tmp/r2d2 || return
-	rp=$(cat /tmp/r2d2 | awk '{print $2}')
-	size=$(du -h $rp | awk '{print $1}')
-	echo " $size $(basename $rp)"
+	date '+%Y.%m.%d|%H:%M'
 }
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 export IDENTIFIER="unicode"
-. "$DIR/dwmbar-functions/dwm_alsa.sh"
-xsetroot -name "    $(dwm_alsa)  $(show_record) $(print_date) "
-#old_received_bytes=$received_bytes
-#old_transmitted_bytes=$transmitted_bytes
+. "$DIR/dwmbar-functions/dwm_battery.sh"
+. "$DIR/dwmbar-functions/dwm_backlight.sh"
+#. "$DIR/dwmbar-functions/dwm_weather.sh"
+xsetroot -name "$(print_volume)|$(dwm_battery)|$(dwm_backlight)|$(print_date)|"
 old_time=$now
 
 exit 0

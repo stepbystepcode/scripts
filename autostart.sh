@@ -7,7 +7,7 @@ picom -b --experimental-backend
 /bin/bash ~/scripts/tap-to-click.sh &
 /bin/bash ~/scripts/inverse-scroll.sh &
 nm-applet &
-xfce4-volumed-pulse &
 /bin/bash ~/scripts/run-mailsync.sh &
 ~/scripts/autostart_wait.sh &
 fcitx5 &
+xrandr --output eDP-1 --mode 1920x1080
