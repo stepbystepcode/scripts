@@ -1,6 +1,6 @@
 print_volume() {
 	volume="$(pulseaudio-ctl | sed -n '15p' | awk  '{print substr($4,14)}')"
-		if [ "$volume" -eq 0 ]; then
+		if [[ $volume -eq 0 || $(pulseaudio-ctl | sed -n '16p') == *yes* ]]; then
             printf "🔇"
         elif [ "$volume" -gt 0 ] && [ "$volume" -le 33 ]; then
             printf "🔈$volume%s%%"

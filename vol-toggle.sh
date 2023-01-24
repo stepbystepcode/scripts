@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/usr/bin/amixer set Master toggle
+pulseaudio-ctl mute
 bash ~/scripts/dwm-status-refresh.sh
